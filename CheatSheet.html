@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not Bored in NZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #0a110e;
+    --moss: #2d5a3d;
+    --fern: #4a8c5c;
+    --sage: #8ab89a;
+    --mist: #d4e6d8;
+    --cream: #f5f0e8;
+    --sand: #e8dcc8;
+    --gold: #c8a84b;
+    --sky: #7ab8d4;
+    --dusk: #3d6b7a;
+    --off-white: #faf8f4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--forest);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--forest);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 80%, rgba(74,140,92,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(61,107,122,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(26,58,42,0.8) 0%, transparent 70%);
+  }
+
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+  .shape:nth-child(1) { width: 600px; height: 600px; background: var(--fern); top: -200px; left: -100px; animation-delay: 0s; }
+  .shape:nth-child(2) { width: 400px; height: 400px; background: var(--sky); bottom: -100px; right: -100px; animation-delay: -4s; }
+  .shape:nth-child(3) { width: 300px; height: 300px; background: var(--gold); top: 50%; right: 10%; animation-delay: -8s; }
+
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(30px, -20px) scale(1.05); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--mist);
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--forest);
+    padding: 1rem 2.5rem;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-primary:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 1rem 2.5rem;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--sage);
+    transform: translateY(-2px);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.5s forwards;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    background: var(--forest);
+    padding: 1.5rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--mist);
+    padding: 0.5rem 1.25rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 2px;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--forest);
+    font-weight: 500;
+  }
+
+  /* MOOD SELECTOR */
+  .mood-section {
+    background: var(--cream);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--fern);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--forest);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--moss);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .mood-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .mood-card {
+    background: white;
+    border: 2px solid transparent;
+    padding: 1.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  .mood-card:hover, .mood-card.selected {
+    border-color: var(--fern);
+    background: var(--forest);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(26,58,42,0.2);
+  }
+
+  .mood-card:hover .mood-emoji,
+  .mood-card.selected .mood-emoji { transform: scale(1.2); }
+  .mood-card:hover .mood-label,
+  .mood-card.selected .mood-label { color: var(--cream); }
+
+  .mood-emoji {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .mood-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--forest);
+    transition: color 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+
+  /* PLACES GRID */
+  .places-section {
+    padding: 5rem 2rem;
+    background: var(--off-white);
+  }
+
+  .places-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .place-card {
+    background: white;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .place-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(26,58,42,0.15);
+  }
+
+  .place-card.hidden {
+    display: none;
+  }
+
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .card-link:hover .card-name {
+    color: var(--fern);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .google-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: white;
+    color: #444;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: all 0.25s ease;
+    pointer-events: none;
+  }
+
+  .place-card:hover .google-badge {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-img {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-name {
+    cursor: pointer;
+  }
+
+  .card-img-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .place-card:hover .card-img-bg {
+    transform: scale(1.05);
+  }
+
+  .card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,58,42,0.7) 0%, transparent 60%);
+  }
+
+  .card-region {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .card-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .card-rating {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .card-location {
+    font-size: 0.82rem;
+    color: var(--fern);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tag {
+    background: var(--mist);
+    color: var(--moss);
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .card-save {
+    width: 100%;
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    padding: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 2px;
+  }
+
+  .card-save:hover {
+    background: var(--fern);
+  }
+
+  .card-save.saved {
+    background: var(--gold);
+    color: var(--forest);
+  }
+
+  /* PLANNER SECTION */
+  .planner-section {
+    background: var(--forest);
+    padding: 5rem 2rem;
+    color: var(--cream);
+  }
+
+  .planner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .planner-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .planner-header .section-label { color: var(--gold); }
+  .planner-header .section-title { color: var(--cream); }
+  .planner-header .section-sub { color: var(--sage); }
+
+  .planner-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 4px;
+  }
+
+  .planner-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+
+  .planner-empty p {
+    color: var(--sage);
+    font-weight: 300;
+  }
+
+  .planner-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .planner-item {
+    background: rgba(255,255,255,0.07);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--gold);
+    animation: fadeUp 0.4s ease both;
+    transition: background 0.2s;
+  }
+
+  .planner-item:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .planner-item-emoji { font-size: 1.8rem; }
+
+  .planner-item-info { flex: 1; }
+
+  .planner-item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .planner-item-region {
+    font-size: 0.8rem;
+    color: var(--sage);
+    letter-spacing: 0.05em;
+  }
+
+  .planner-remove {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.5);
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .planner-remove:hover {
+    background: rgba(200, 60, 60, 0.3);
+    border-color: rgba(200, 60, 60, 0.5);
+    color: white;
+  }
+
+  .planner-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* STAT BAR */
+  .stat-bar {
+    background: var(--sand);
+    padding: 3rem 2rem;
+  }
+
+  .stat-inner {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--forest);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--moss);
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest);
+    color: var(--sage);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .places-grid { grid-template-columns: 1fr; }
+    .stat-inner { gap: 2rem; }
+  }
+
+  /* Stagger animation for cards */
+  .place-card:nth-child(1) { animation-delay: 0.05s; }
+  .place-card:nth-child(2) { animation-delay: 0.1s; }
+  .place-card:nth-child(3) { animation-delay: 0.15s; }
+  .place-card:nth-child(4) { animation-delay: 0.2s; }
+  .place-card:nth-child(5) { animation-delay: 0.25s; }
+  .place-card:nth-child(6) { animation-delay: 0.3s; }
+  .place-card:nth-child(7) { animation-delay: 0.35s; }
+  .place-card:nth-child(8) { animation-delay: 0.4s; }
+  .place-card:nth-child(9) { animation-delay: 0.45s; }
+
+  /* Gradient backgrounds for card images (since no real images) */
+  .grad-1 { background: linear-gradient(135deg, #2d6a4f, #52b788); }
+  .grad-2 { background: linear-gradient(135deg, #1d3557, #457b9d); }
+  .grad-3 { background: linear-gradient(135deg, #7f4f24, #b5838d); }
+  .grad-4 { background: linear-gradient(135deg, #3d405b, #81b29a); }
+  .grad-5 { background: linear-gradient(135deg, #264653, #2a9d8f); }
+  .grad-6 { background: linear-gradient(135deg, #606c38, #dda15e); }
+  .grad-7 { background: linear-gradient(135deg, #023e8a, #90e0ef); }
+  .grad-8 { background: linear-gradient(135deg, #480ca8, #f72585); }
+  .grad-9 { background: linear-gradient(135deg, #004b23, #80b918); }
+  .grad-10 { background: linear-gradient(135deg, #6a0572, #d63af9); }
+  .grad-11 { background: linear-gradient(135deg, #b5451b, #f4a261); }
+  .grad-12 { background: linear-gradient(135deg, #0a3d62, #60a3bc); }
+  .grad-13 { background: linear-gradient(135deg, #2c3e50, #bdc3c7); }
+
+  .card-img-svg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    opacity: 0.6;
+  }
+
+  .notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--gold);
+    font-size: 0.9rem;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s ease;
+    border-radius: 2px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .notification.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* SURPRISE PICK HIGHLIGHT */
+  @keyframes surprisePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(200,168,75,0.7), 0 20px 50px rgba(26,58,42,0.15); transform: translateY(-8px) scale(1); }
+    40%  { box-shadow: 0 0 0 16px rgba(200,168,75,0), 0 20px 50px rgba(26,58,42,0.15); transform: translateY(-8px) scale(1.02); }
+    100% { box-shadow: 0 0 0 0 rgba(200,168,75,0), 0 20px 50px rgba(26,58,42,0.15); transform: translateY(-8px) scale(1); }
+  }
+
+  .place-card.surprise-pick {
+    animation: surprisePulse 1s ease 0.1s 2, fadeUp 0.6s ease both;
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(26,58,42,0.25);
+    position: relative;
+    z-index: 2;
+  }
+
+  .place-card.surprise-pick::before {
+    content: "🎲 SURPRISE PICK";
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--forest);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    padding: 0.25rem 1rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  /* SURPRISE MODAL */
+  .surprise-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 24, 16, 0.85);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .surprise-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .surprise-modal {
+    background: var(--off-white);
+    max-width: 520px;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(40px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+
+  .surprise-overlay.open .surprise-modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .surprise-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.08);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--forest);
+    z-index: 5;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .surprise-close:hover { background: rgba(0,0,0,0.15); }
+
+  .surprise-header {
+    background: var(--forest);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .surprise-dice {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    animation: spinIn 0.5s ease;
+  }
+
+  @keyframes spinIn {
+    from { transform: rotate(-180deg) scale(0); opacity: 0; }
+    to   { transform: rotate(0deg) scale(1); opacity: 1; }
+  }
+
+  .surprise-eyebrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .surprise-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--cream);
+  }
+
+  .surprise-body {
+    padding: 2rem;
+  }
+
+  .surprise-loading {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--moss);
+  }
+
+  .surprise-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--mist);
+    border-top-color: var(--fern);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .surprise-result {
+    text-align: center;
+  }
+
+  .surprise-place-emoji {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+    animation: fadeUp 0.4s ease;
+  }
+
+  .surprise-place-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+    animation: fadeUp 0.4s ease 0.05s both;
+  }
+
+  .surprise-place-region {
+    font-size: 0.82rem;
+    color: var(--fern);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.4s ease 0.1s both;
+  }
+
+  .surprise-place-desc {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    text-align: left;
+    animation: fadeUp 0.4s ease 0.15s both;
+  }
+
+  .surprise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+    animation: fadeUp 0.4s ease 0.2s both;
+  }
+
+  .surprise-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.4s ease 0.25s both;
+  }
+
+  .surprise-again {
+    border-color: var(--fern);
+    color: var(--forest);
+  }
+
+  .surprise-again:hover {
+    background: var(--fern);
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification"></div>
+
+<!-- SURPRISE MODAL -->
+<div class="surprise-overlay" id="surpriseOverlay" onclick="closeSurprise(event)">
+  <div class="surprise-modal" id="surpriseModal">
+    <button class="surprise-close" onclick="closeSurpriseModal()">✕</button>
+    <div class="surprise-header">
+      <div class="surprise-dice">🎲</div>
+      <div class="surprise-eyebrow">OFF THE BEATEN TRACK</div>
+      <h2 class="surprise-title">Your Random Pick</h2>
+    </div>
+    <div class="surprise-body" id="surpriseBody">
+      <div class="surprise-loading" id="surpriseLoading">
+        <div class="surprise-spinner"></div>
+        <p>Finding something unexpected in Aotearoa…</p>
+      </div>
+      <div class="surprise-result" id="surpriseResult" style="display:none;">
+        <div class="surprise-place-emoji" id="surpriseEmoji"></div>
+        <h3 class="surprise-place-name" id="surpriseName"></h3>
+        <div class="surprise-place-region" id="surpriseRegion"></div>
+        <p class="surprise-place-desc" id="surpriseDesc"></p>
+        <div class="surprise-tags" id="surpriseTags"></div>
+        <div class="surprise-actions">
+          <button class="btn-primary" id="surpriseMapsBtn" onclick="openSurpriseMaps()">🗺️ Find on Google Maps</button>
+          <button class="btn-outline surprise-again" onclick="runSurprise()">🎲 Another One</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">NZ Planner Adventure Planner</div>
+    <h1>IDK Planner</h1>
+    <div class="hero-cta">
+      <a href="#places" class="btn-primary">Explore Places</a>
+      <a href="#planner" class="btn-outline">My Planner</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterPlaces('all', this)">All</button>
+  <button class="filter-btn" onclick="filterPlaces('nature', this)">🌿 Nature</button>
+  <button class="filter-btn" onclick="filterPlaces('adventure', this)">⚡ Adventure</button>
+  <button class="filter-btn" onclick="filterPlaces('culture', this)">🏛️ Culture</button>
+  <button class="filter-btn" onclick="filterPlaces('city', this)">🏙️ City</button>
+  <button class="filter-btn" onclick="filterPlaces('auckland', this)">Auckland</button>
+  <button class="filter-btn" onclick="filterPlaces('wellington', this)">Wellington</button>
+  <button class="filter-btn" onclick="filterPlaces('south', this)">South Island</button>
+  <button class="filter-btn" onclick="filterPlaces('shopping', this)">🛍️ Shopping</button>
+</div>
+
+<!-- MOOD SECTION -->
+<section class="mood-section">
+  <div class="mood-grid">
+    <div class="mood-card" onclick="selectMood(this, 'adventure')">
+      <span class="mood-emoji">🤸</span>
+      <div class="mood-label">Thrill Seeker</div>
+    </div>
+    <div class="mood-card" onclick="selectMood(this, 'nature')">
+      <span class="mood-emoji">🌿</span>
+      <div class="mood-label">Into Nature</div>
+    </div>
+    <div class="mood-card" onclick="selectMood(this, 'culture')">
+      <span class="mood-emoji">🎨</span>
+      <div class="mood-label">Culture Fix</div>
+    </div>
+    <div class="mood-card" onclick="selectMood(this, 'city')">
+      <span class="mood-emoji">☕</span>
+      <div class="mood-label">City Day</div>
+    </div>
+    <div class="mood-card" onclick="selectMood(this, 'all')">
+      <span class="mood-emoji">🎲</span>
+      <div class="mood-label">Surprise Me</div>
+    </div>
+    <div class="mood-card" onclick="selectMood(this, 'shopping')">
+      <span class="mood-emoji">🛍️</span>
+      <div class="mood-label">Retail Therapy</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-inner">
+    <div class="stat-item">
+      <span class="stat-num">13</span>
+      <div class="stat-label">HAND-PICKED SPOTS</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">5</span>
+      <div class="stat-label">REGIONS</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4.7</span>
+      <div class="stat-label">AVG RATING</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLACES SECTION -->
+<section class="places-section" id="places">
+  <div class="places-header">
+    <div class="section-label">The Good Stuff</div>
+    <h2 class="section-title">Places to Go</h2>
+    <p class="section-sub">Real spots, real ratings, real adventures.</p>
+  </div>
+
+  <div class="places-grid" id="placesGrid">
+
+    <div class="place-card" data-category="nature south" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJveQuVCdjPG0RUO5bZYfvAA8">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-1 card-img-svg">🌊</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Tasman / South Island</div>
+        <div class="card-type">🌿</div>
+        <div class="card-rating">  4.8 · 2,141 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Abel Tasman National Park</div>
+        <div class="card-desc">Crystal-clear turquoise water, golden beaches, seal colonies, and world-class coastal trails.</div>
+        <div class="card-tags">
+          <span class="tag">Hiking</span>
+          <span class="tag">Kayaking</span>
+          <span class="tag">Wildlife</span>
+          <span class="tag">Great Walk</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Abel Tasman National Park', 'South Island', '🌿')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="city auckland" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJJdxLbfBHDW0Rh5OtgMO10QI">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-2 card-img-svg">🗼</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Auckland</div>
+        <div class="card-type">🏙️</div>
+        <div class="card-rating">   4.6 · 21,049 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Sky Tower</div>
+        <div class="card-location">📍 Auckland City Centre</div>
+        <div class="card-desc">Auckland's iconic landmark towering 328m above the city. Jaw-dropping 360° views across the Waitemata Harbour.</div>
+        <div class="card-tags">
+          <span class="tag">Views</span>
+          <span class="tag">Iconic</span>
+          <span class="tag">Sky Walk</span>
+          <span class="tag">Dining</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Sky Tower', 'Auckland', '🗼')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="nature adventure" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJddne-m-kbm0RYDDj6ccSVA8">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-3 card-img-svg">♨️</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Rotorua</div>
+        <div class="card-type">🌋</div>
+        <div class="card-rating">   4.6 · 8,311 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Wai-O-Tapu Thermal Wonderland</div>
+        <div class="card-location">📍 Rotorua, Bay of Plenty</div>
+        <div class="card-desc">A surreal, otherworldly landscape of vivid emerald pools, bubbling mud, and steaming vents. Catch the Lady Knox Geyser eruption at 10:15am — and soak in nearby free hot pools afterwards.</div>
+        <div class="card-tags">
+          <span class="tag">Geothermal</span>
+          <span class="tag">Unique</span>
+          <span class="tag">Photography</span>
+          <span class="tag">Hot Pools</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Wai-O-Tapu Thermal Wonderland', 'Rotorua', '♨️')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="culture wellington" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJnRaYrdGvOG0RMJot6PyfQJo">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-4 card-img-svg">🏛️</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Wellington</div>
+        <div class="card-type">🎨</div>
+        <div class="card-rating">   4.7 · 25,625 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Te Papa Tongarewa</div>
+        <div class="card-location">📍 Wellington Waterfront</div>
+        <div class="card-desc">New Zealand's national museum — free for residents — spanning Māori culture, natural history, the emotional Gallipoli exhibition by Weta Workshop, and an earthquake simulator. Easily a full day.</div>
+        <div class="card-tags">
+          <span class="tag">Free Entry</span>
+          <span class="tag">Māori Culture</span>
+          <span class="tag">History</span>
+          <span class="tag">Family</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Te Papa Tongarewa', 'Wellington', '🏛️')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="nature wildlife wellington" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJmfs6nEKwOG0REKydJGLvAA8">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-5 card-img-svg">🦜</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Wellington</div>
+        <div class="card-type">🌿</div>
+        <div class="card-rating">   4.7 · 5,935 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Zealandia Te Māra a Tāne</div>
+        <div class="card-location">📍 Karori, Wellington</div>
+        <div class="card-desc">A world-first urban ecosanctuary where kākā, tūī, and tuatara roam freely behind a predator-proof fence. Spot creatures that haven't lived here for 700 years. Incredible guided tours available.</div>
+        <div class="card-tags">
+          <span class="tag">Wildlife</span>
+          <span class="tag">Conservation</span>
+          <span class="tag">Tuatara</span>
+          <span class="tag">Birdwatching</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Zealandia', 'Wellington', '🦜')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="adventure wellington" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJ7WUylYFTP20RovGLIVkpf6Y">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-6 card-img-svg">🌲</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Porirua, Wellington</div>
+        <div class="card-type">⚡</div>
+        <div class="card-rating">   4.6 · 749 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Adrenalin Forest Wellington</div>
+        <div class="card-location">📍 Aotea, Porirua</div>
+        <div class="card-desc">Six levels of treetop challenge courses — from beginner-friendly to genuinely terrifying. Flying foxes, rope bridges, and aerial obstacles through native bush. Arms will be jelly by the end.</div>
+        <div class="card-tags">
+          <span class="tag">Treetop</span>
+          <span class="tag">High Ropes</span>
+          <span class="tag">Family</span>
+          <span class="tag">Thrills</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Adrenalin Forest Wellington', 'Wellington', '🌲')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="nature adventure south" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJI46j01NFOW0RchsUKoJUrtI">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-7 card-img-svg">🛶</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Marlborough / South Island</div>
+        <div class="card-type">🌊</div>
+        <div class="card-rating">   4.9 · 98 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Pelorus Eco Adventures</div>
+        <div class="card-location">📍 Havelock, Marlborough Sounds</div>
+        <div class="card-desc">Kayak down the stunning Pelorus River — the same waterway used in The Hobbit barrel scene. Guides lead you through rapids, share river history, and make sure you're screaming from fun, not terror.</div>
+        <div class="card-tags">
+          <span class="tag">Kayaking</span>
+          <span class="tag">Hobbit</span>
+          <span class="tag">Rivers</span>
+          <span class="tag">Guided</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Pelorus Eco Adventures', 'Marlborough', '🛶')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="culture auckland" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJFSuLDIBHDW0R81J0b2iDOeQ">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-8 card-img-svg">🎬</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Auckland City</div>
+        <div class="card-type">🎨</div>
+        <div class="card-rating">  df 4.8 · 2,325 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Weta Workshop Unleashed</div>
+        <div class="card-location">📍 Auckland City Centre</div>
+        <div class="card-desc">Step behind the scenes of the world's greatest fantasy filmmaking studio. Interactive sets, creature workshops, costume displays — mind-blowing even if you're not a Lord of the Rings fan.</div>
+        <div class="card-tags">
+          <span class="tag">LOTR</span>
+          <span class="tag">Film</span>
+          <span class="tag">Interactive</span>
+          <span class="tag">Unique</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Weta Workshop Unleashed', 'Auckland', '🎬')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="adventure nature south" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJqcA7HRMtR20RTAmxwo0lML0">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-9 card-img-svg">🏔️</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Wairarapa</div>
+        <div class="card-type">⚡</div>
+        <div class="card-rating">  df 4.8 · 258 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Patuna Farm Adventures</div>
+        <div class="card-location">📍 Ruakōkoputuna, Wairarapa</div>
+        <div class="card-desc">Walk through a stunning chasm, navigate a river on foot, scramble down ladders and ropes into dramatic gorges. An off-the-beaten-track gem with breathtaking natural scenery and optional deep-water swimming.</div>
+        <div class="card-tags">
+          <span class="tag">Canyoning</span>
+          <span class="tag">Hidden Gem</span>
+          <span class="tag">River Walk</span>
+          <span class="tag">Off-track</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Patuna Farm Adventures', 'Wairarapa', '🏔️')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="shopping city auckland" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJr51ka3dIDW0RO4-xkJrr9Bc">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-10 card-img-svg">🏬</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Auckland</div>
+        <div class="card-type">🛍️</div>
+        <div class="card-rating"> 4.3 · 9,112 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Westfield Newmarket</div>
+        <div class="card-location">📍 Newmarket, Auckland</div>
+        <div class="card-desc">Auckland's most upscale mall, split across two buildings linked by sky bridges. Major fashion brands, rooftop dining with a playground, cinema, and a gym — with free parking on weekdays.</div>
+        <div class="card-tags">
+          <span class="tag">Fashion</span>
+          <span class="tag">Rooftop Dining</span>
+          <span class="tag">Cinema</span>
+          <span class="tag">Free Parking</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Westfield Newmarket', 'Auckland', '🏬')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="shopping city auckland" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJq8xVy0dJDW0RDrwEDCn_4zA">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-11 card-img-svg">🛒</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Auckland</div>
+        <div class="card-type">🛍️</div>
+        <div class="card-rating"> 4.4 · 19,768 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Sylvia Park</div>
+        <div class="card-location">📍 Mt Wellington, Auckland</div>
+        <div class="card-desc">Auckland's largest shopping centre with international brands like H&M and Zara, a massive food court, HOYTS cinema, and a lifestyle precinct for furniture and homeware.</div>
+        <div class="card-tags">
+          <span class="tag">Zara · H&M</span>
+          <span class="tag">Food Court</span>
+          <span class="tag">Cinema</span>
+          <span class="tag">Huge Range</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Sylvia Park', 'Auckland', '🛒')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="shopping city auckland" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJme7AF1hHDW0RdGdheRij9BI">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-12 card-img-svg">⚓</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Auckland City Centre</div>
+        <div class="card-type">🛍️</div>
+        <div class="card-rating"> 4.4 · 6,153 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Commercial Bay</div>
+        <div class="card-location">📍 Queen Street, Auckland CBD</div>
+        <div class="card-desc">A sleek waterfront precinct right on the Waitemata Harbour</div>
+        <div class="card-tags">
+          <span class="tag">Waterfront</span>
+          <span class="tag">Boutiques</span>
+          <span class="tag">Food Hall</span>
+          <span class="tag">Harbour Views</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Commercial Bay', 'Auckland', '⚓')">+ Add to Planner</button>
+      </div>
+    </div>
+
+    <div class="place-card" data-category="shopping city wellington" data-maps="https://www.google.com/maps/place/?q=place_id:ChIJy7GEVNSvOG0R6E5FiyYgNf4">
+      <div class="card-img" onclick="openMaps(this)">
+        <div class="card-img-bg grad-13 card-img-svg">🕰️</div>
+        <div class="card-img-overlay"></div>
+        <div class="card-region">Wellington</div>
+        <div class="card-type">🛍️</div>
+        <div class="card-rating"> 4.4 · 916 reviews</div>
+        <div class="google-badge">🗺️ View on Google Maps</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" onclick="openMaps(this)">Old Bank Arcade</div>
+        <div class="card-location">📍 Lambton Quay, Wellington CBD</div>
+        <div class="card-desc">A stunning heritage bank building transformed into a beautiful arcade of boutiques, cafés, and a basement food hall. Don't miss the animated chandelier-clock</div>
+        <div class="card-tags">
+          <span class="tag">Heritage Building</span>
+          <span class="tag">Boutiques</span>
+          <span class="tag">Food Hall</span>
+          <span class="tag">Unique</span>
+        </div>
+        <button class="card-save" onclick="toggleSave(this, 'Old Bank Arcade', 'Wellington', '🕰️')">+ Add to Planner</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PLANNER SECTION -->
+<section class="planner-section" id="planner">
+  <div class="planner-inner">
+    <div class="planner-header">
+      <div class="section-label">Your Itinerary</div>
+      <h2 class="section-title">My Planner</h2>
+      <p class="section-sub">Build your perfect NZ day out.</p>
+    </div>
+
+    <div id="plannerEmpty" class="planner-empty">
+      <div class="planner-empty-icon">🗺️</div>
+      <p>No spots saved yet — explore above and hit <strong>"Add to Planner"</strong> to build your day!</p>
+    </div>
+
+    <div id="plannerList" class="planner-list" style="display:none;"></div>
+
+    <div id="plannerActions" class="planner-actions" style="display:none;">
+      <button class="btn-primary" onclick="printPlanner()">🖨️ Print Plan</button>
+      <button class="btn-outline" onclick="clearPlanner()">Clear All</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  let planner = [];
+
+  function filterPlaces(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.place-card').forEach(c => c.classList.remove('surprise-pick'));
+
+    document.querySelectorAll('.place-card').forEach(card => {
+      if (category === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const cats = card.dataset.category || '';
+        card.classList.toggle('hidden', !cats.includes(category));
+      }
+    });
+  }
+
+  function selectMood(card, category) {
+    document.querySelectorAll('.mood-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+
+    if (category === 'all') {
+      surpriseMe();
+      return;
+    }
+
+    // Auto-filter
+    const filterMap = {
+      adventure: 'adventure',
+      nature: 'nature',
+      culture: 'culture',
+      city: 'city',
+      shopping: 'shopping',
+    };
+    const targetCat = filterMap[category] || 'all';
+    const matchingBtn = [...document.querySelectorAll('.filter-btn')].find(b => {
+      const text = b.textContent.trim().toLowerCase();
+      return text.includes(targetCat);
+    });
+    if (matchingBtn) filterPlaces(targetCat, matchingBtn);
+
+    // Scroll to places
+    setTimeout(() => {
+      document.getElementById('places').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  }
+
+  function surpriseMe() {
+    document.getElementById('surpriseOverlay').classList.add('open');
+    runSurprise();
+  }
+
+  const hiddenGems = [
+    { name: "Glowworm Caves, Waitomo", region: "Waikato", emoji: "", description: "Float silently through an ancient cave system beneath a living galaxy of thousands of glowworms. The darkness is total, the silence absolute — and the ceiling above you pulses with blue-green light like a star-filled sky underground.", tags: ["Caves", "Glowworms", "Unique", "Night Tour"], mapsSearch: "Waitomo Glowworm Caves" },
+    { name: "Hobbiton Movie Set", region: "Matamata, Waikato", emoji: "", description: "Walk through the actual Shire from The Lord of the Rings and The Hobbit, still immaculately maintained on a working sheep farm. Forty-four hobbit holes, the Green Dragon Inn, and rolling green hills make this feel almost impossibly real.", tags: ["LOTR", "Movie Set", "Iconic", "Farm"], mapsSearch: "Hobbiton Movie Set Matamata" },
+    { name: "Tongariro Alpine Crossing", region: "Tongariro, Central Plateau", emoji: "", description: "One of the world's great one-day walks, crossing active volcanic terrain past the iconic Emerald Lakes, Red Crater, and Mt Ngauruhoe (Mt Doom). Otherworldly landscapes at every turn — plan for a full day and pack layers.", tags: ["Hiking", "Volcanic", "Day Walk", "Epic"], mapsSearch: "Tongariro Alpine Crossing" },
+    { name: "Milford Sound", region: "Fiordland, South Island", emoji: "", description: "A fiord of almost supernatural drama — sheer cliffs rising 1,200 metres straight from the water, thundering waterfalls, and pods of dolphins gliding alongside cruise boats. Often shrouded in mist, it's just as beautiful in the rain.", tags: ["Fiord", "Cruise", "Dolphins", "Scenery"], mapsSearch: "Milford Sound Fiordland" },
+    { name: "Cathedral Cove", region: "Coromandel Peninsula", emoji: "", description: "A sea cave that opens dramatically onto a pristine white beach, accessible only on foot or by kayak. The natural stone archway frames turquoise water perfectly — arrive early morning to beat the crowds and catch golden light.", tags: ["Beach", "Sea Cave", "Hike", "Scenic"], mapsSearch: "Cathedral Cove Coromandel" },
+    { name: "Hot Water Beach", region: "Coromandel Peninsula", emoji: "", description: "Dig your own hot tub in the sand at low tide — geothermal water bubbles up right through the beach, and you can shape the sand to create your own private thermal pool. Bring a spade and go two hours either side of low tide.", tags: ["Geothermal", "Beach", "Unique", "Family"], mapsSearch: "Hot Water Beach Coromandel" },
+    { name: "Queenstown Gondola & Luge", region: "Queenstown", emoji: "", description: "Ride the Skyline Gondola up to Bob's Peak for sweeping views over Lake Wakatipu and the Remarkables mountain range, then hurtle back down on a luge cart on winding tracks through the forest. Pure fun for any age.", tags: ["Views", "Gondola", "Luge", "Family"], mapsSearch: "Skyline Gondola Queenstown" },
+    { name: "Franz Josef Glacier", region: "West Coast, South Island", emoji: "", description: "One of the world's most accessible glaciers, tumbling down from the Southern Alps just 19km from the coast. Take a guided ice walk or a scenic helicopter flight over the vast blue-white ice fields for a perspective that defies imagination.", tags: ["Glacier", "Heli Tour", "Ice Walk", "Adventure"], mapsSearch: "Franz Josef Glacier West Coast" },
+    { name: "Punakaiki Pancake Rocks", region: "Paparoa, West Coast", emoji: "", description: "Millions of years of geological layering have created these bizarre limestone stacks that look exactly like towering pancakes on the Tasman Sea coastline. Time your visit with a high tide swell and the blowholes erupt dramatically skyward.", tags: ["Geological", "Coastal Walk", "Blowholes", "Free"], mapsSearch: "Pancake Rocks Punakaiki" },
+    { name: "Lake Tekapo Stargazing", region: "Mackenzie Basin, South Island", emoji: "", description: "Located in the Aoraki Mackenzie International Dark Sky Reserve, Lake Tekapo offers some of the clearest night skies on Earth. Book a session at the University of Canterbury Observatory or simply lie on the shore and watch the Milky Way arc overhead.", tags: ["Stargazing", "Dark Sky", "Lake", "Observatory"], mapsSearch: "Lake Tekapo Dark Sky Reserve" },
+    { name: "Otago Peninsula Wildlife", region: "Dunedin, Otago", emoji: "", description: "The Otago Peninsula is home to the world's rarest penguin (yellow-eyed), a royal albatross colony, fur seals, and sea lions — all within an hour of Dunedin city. This is wildlife watching at its most raw and accessible.", tags: ["Penguins", "Wildlife", "Albatross", "Scenic Drive"], mapsSearch: "Otago Peninsula Wildlife Tours" },
+    { name: "Coromandel Town Gold Mine Walk", region: "Coromandel Town", emoji: "", description: "Wander into the actual gold mine tunnels that sparked New Zealand's first gold rush in the 1850s. The self-guided walk through dripping tunnels is genuinely atmospheric — emerge blinking into sunlight with gold-rush history fresh in your mind.", tags: ["History", "Gold Mine", "Tunnels", "Self-Guided"], mapsSearch: "Coromandel Gold Mine Walk" },
+    { name: "Waiheke Island Ferry & Wineries", region: "Waiheke Island, Auckland", emoji: "", description: "Just 35 minutes from downtown Auckland by ferry, Waiheke is a sun-drenched island of award-winning olive oil, boutique wineries, and gorgeous olive-grove restaurants. Hire a bike or jump on the island bus to winery-hop in style.", tags: ["Wine", "Island", "Ferry", "Restaurants"], mapsSearch: "Waiheke Island wineries" },
+    { name: "Whanganui River Journey", region: "Whanganui", emoji: "", description: "One of New Zealand's Great Walks (by canoe!), the Whanganui River Journey takes you through lush gorges and native bush, past remote marae and the famous Bridge to Nowhere. A unique multi-day paddle through living history.", tags: ["Canoe", "Great Walk", "River", "Multi-Day"], mapsSearch: "Whanganui River Journey canoe" },
+    { name: "Cape Reinga Lighthouse", region: "Northland, Te Paki", emoji: "", description: "At the very tip of New Zealand, where the Tasman Sea and Pacific Ocean visibly collide in churning currents, stands this iconic white lighthouse. For Māori, this is where spirits depart for the afterlife — the spiritual top of Aotearoa.", tags: ["Lighthouse", "Sacred", "Northland", "Scenic Drive"], mapsSearch: "Cape Reinga Lighthouse" },
+    { name: "Rotorua Redwoods Forest", region: "Rotorua", emoji: "", description: "Giant California redwoods planted over 100 years ago have grown into a magnificent forest just minutes from Rotorua's centre. Mountain bike trails, treetop walkways, and night-light experiences wind through these cathedral-like giants.", tags: ["Forest", "Mountain Biking", "Walkway", "Free"], mapsSearch: "Redwoods Whakarewarewa Forest Rotorua" },
+    { name: "Oamaru Victorian Precinct", region: "Oamaru, South Island", emoji: "", description: "New Zealand's steampunk capital — a beautifully preserved Victorian port town with limestone buildings, a thriving steampunk museum, tiny blue penguin colony, and a retro cycling culture. The most unexpectedly charming small town in the country.", tags: ["Steampunk", "Victorian", "Penguins", "Quirky"], mapsSearch: "Oamaru Victorian Precinct" },
+    { name: "Kaikōura Whale Watching", region: "Kaikōura, South Island", emoji: "", description: "One of the few places on Earth where you can watch sperm whales year-round, just a short distance from shore. Dolphin swims, fur seal colonies, and crayfish dinners make Kaikōura a must-stop on any South Island road trip.", tags: ["Whales", "Dolphins", "Marine Wildlife", "Scenic"], mapsSearch: "Kaikoura Whale Watch" },
+    { name: "Napier Art Deco Walk", region: "Napier, Hawke's Bay", emoji: "", description: "Rebuilt almost entirely in 1931 after a devastating earthquake, Napier is the world's most complete Art Deco city. Self-guided walks reveal hundreds of perfectly preserved facades, vintage cars, and an atmosphere like no other in New Zealand.", tags: ["Art Deco", "Architecture", "Historic", "Self-Guided"], mapsSearch: "Napier Art Deco Walk" },
+    { name: "Hokitika Gorge", region: "Hokitika, West Coast", emoji: "", description: "A short walk through native bush reveals one of the most startling sights in New Zealand — a gorge carved by glacial water of impossible turquoise intensity, so vivid it looks digitally enhanced. The swingbridge above it seals the deal.", tags: ["Gorge", "Turquoise Water", "Short Walk", "Photography"], mapsSearch: "Hokitika Gorge West Coast" },
+    { name: "Ninety Mile Beach Drive", region: "Northland", emoji: "", description: "Drive along the actual beach — it's legally a highway. This vast stretch of flat sand dunes and crashing surf on the west coast of Northland is most dramatic at sunset, with almost no one else around for miles in either direction.", tags: ["Beach Drive", "Northland", "Dunes", "Road Trip"], mapsSearch: "Ninety Mile Beach Northland NZ" },
+    { name: "Moeraki Boulders", region: "Otago Coast, South Island", emoji: "", description: "Giant spherical boulders — some nearly 2 metres across — scattered across a remote beach like a giant's marbles. These ancient concretions formed over millions of years and are sacred to local Māori as petrified food baskets from a canoe wreck.", tags: ["Geological", "Beach", "Māori Legend", "Photography"], mapsSearch: "Moeraki Boulders Otago" },
+    { name: "Auckland Fish Market", region: "Auckland City", emoji: "", description: "The best seafood in Auckland at the source — fresh off the boats and into the market stalls. Get a bag of freshly shucked oysters, watch fishmongers at work, grab fish and chips on the wharf, and browse the weekend farmer's market.", tags: ["Seafood", "Local", "Waterfront", "Food"], mapsSearch: "Auckland Fish Market" },
+    { name: "Christchurch Botanic Gardens", region: "Christchurch", emoji: "", description: "Forty-three hectares of stunning curated gardens inside Hagley Park, completely free to wander. The rose garden, fernery, and seasonal tulip displays are spectacular — hire a punting boat on the Avon River for the full experience.", tags: ["Gardens", "Free", "Punting", "Peaceful"], mapsSearch: "Christchurch Botanic Gardens" },
+    { name: "Wellington Night Markets", region: "Wellington", emoji: "", description: "Wellington's vibrant night market scene — Harbourside Market on Sundays and the Newtown Night Market on Fridays — brings together dozens of cuisines, live music, and local makers in the open air. The best cheap eats in the capital.", tags: ["Food", "Night Market", "Local", "Cheap Eats"], mapsSearch: "Wellington Night Market" },
+  ];
+
+  let lastSurpriseIndex = -1;
+
+  function runSurprise() {
+    // Respin dice
+    const dice = document.querySelector('.surprise-dice');
+    dice.style.animation = 'none';
+    void dice.offsetWidth;
+    dice.style.animation = 'spinIn 0.5s ease';
+
+    // Show loading briefly for effect
+    document.getElementById('surpriseLoading').style.display = 'block';
+    document.getElementById('surpriseResult').style.display = 'none';
+
+    setTimeout(() => {
+      // Pick a random gem that isn't the last one shown
+      let idx;
+      do { idx = Math.floor(Math.random() * hiddenGems.length); }
+      while (idx === lastSurpriseIndex && hiddenGems.length > 1);
+      lastSurpriseIndex = idx;
+      const gem = hiddenGems[idx];
+
+      document.getElementById('surpriseEmoji').textContent = gem.emoji;
+      document.getElementById('surpriseName').textContent = gem.name;
+      document.getElementById('surpriseRegion').textContent = '📍 ' + gem.region;
+      document.getElementById('surpriseDesc').textContent = gem.description;
+
+      const tagsEl = document.getElementById('surpriseTags');
+      tagsEl.innerHTML = gem.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+      const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(gem.mapsSearch + ' New Zealand')}`;
+      document.getElementById('surpriseMapsBtn').dataset.url = mapsUrl;
+
+      document.getElementById('surpriseLoading').style.display = 'none';
+      document.getElementById('surpriseResult').style.display = 'block';
+    }, 600);
+  }
+
+  function openSurpriseMaps() {
+    const url = document.getElementById('surpriseMapsBtn').dataset.url;
+    if (url) window.open(url, '_blank', 'noopener');
+  }
+
+  function closeSurprise(e) {
+    if (e.target === document.getElementById('surpriseOverlay')) closeSurpriseModal();
+  }
+
+  function closeSurpriseModal() {
+    document.getElementById('surpriseOverlay').classList.remove('open');
+    document.querySelectorAll('.mood-card').forEach(c => c.classList.remove('selected'));
+  }
+
+  function toggleSave(btn, name, region, emoji) {
+    const existing = planner.findIndex(p => p.name === name);
+    if (existing > -1) {
+      planner.splice(existing, 1);
+      btn.textContent = '+ Add to Planner';
+      btn.classList.remove('saved');
+      showNotification(`Removed ${name} from planner`);
+    } else {
+      planner.push({ name, region, emoji });
+      btn.textContent = '✓ Saved!';
+      btn.classList.add('saved');
+      showNotification(`${emoji} ${name} added to your planner!`);
+    }
+    renderPlanner();
+  }
+
+  function renderPlanner() {
+    const empty = document.getElementById('plannerEmpty');
+    const list = document.getElementById('plannerList');
+    const actions = document.getElementById('plannerActions');
+
+    if (planner.length === 0) {
+      empty.style.display = 'block';
+      list.style.display = 'none';
+      actions.style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    list.style.display = 'flex';
+    actions.style.display = 'flex';
+
+    list.innerHTML = planner.map((p, i) => `
+      <div class="planner-item">
+        <div class="planner-item-emoji">${p.emoji}</div>
+        <div class="planner-item-info">
+          <div class="planner-item-name">${p.name}</div>
+          <div class="planner-item-region">📍 ${p.region}</div>
+        </div>
+        <button class="planner-remove" onclick="removeItem(${i})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  function removeItem(i) {
+    const removed = planner[i];
+    planner.splice(i, 1);
+
+    // Reset corresponding card button
+    document.querySelectorAll('.place-card').forEach(card => {
+      const nameEl = card.querySelector('.card-name');
+      if (nameEl && nameEl.textContent === removed.name) {
+        const btn = card.querySelector('.card-save');
+        btn.textContent = '+ Add to Planner';
+        btn.classList.remove('saved');
+      }
+    });
+
+    renderPlanner();
+    showNotification(`Removed ${removed.name}`);
+  }
+
+  function clearPlanner() {
+    planner = [];
+    document.querySelectorAll('.card-save.saved').forEach(btn => {
+      btn.textContent = '+ Add to Planner';
+      btn.classList.remove('saved');
+    });
+    renderPlanner();
+    showNotification('Planner cleared!');
+  }
+
+  function printPlanner() {
+    if (planner.length === 0) return;
+    const content = planner.map((p, i) => `${i+1}. ${p.emoji} ${p.name} — ${p.region}`).join('\n');
+    const win = window.open('', '_blank');
+    win.document.write(`<pre style="font-family:sans-serif;font-size:16px;padding:2rem;">
+🗺️ MY NEW ZEALAND ADVENTURE PLAN
+================================
+${content}
+
+Generated by Not Bored in NZ ✦ notbored.nz
+    </pre>`);
+    win.print();
+  }
+
+  function showNotification(msg) {
+    const n = document.getElementById('notification');
+    n.textContent = msg;
+    n.classList.add('show');
+    setTimeout(() => n.classList.remove('show'), 2800);
+  }
+
+  function openMaps(el) {
+    const card = el.closest('.place-card');
+    const url = card.dataset.maps;
+    if (url) window.open(url, '_blank', 'noopener');
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
